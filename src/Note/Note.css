@@ -1,7 +1,7 @@
 
 .Note {
   --note-height: 88px;
-  background-color: #010d1e;
+  background-color: #2f8d69;
   color: #cacaca;
   height: var(--note-height);
   margin-bottom: 8px;
@@ -12,7 +12,7 @@
 
 .Note__delete {
   --note-button-height: 32px;
-  background-color: #041a3a;
+  background-color: #043a2e;
   border: 0;
   color: #bdbcbc;
   float: right;
@@ -44,7 +44,7 @@
   text-decoration: none;
 }
 .Note__title a:hover {
-  color: #FFB72F;
+  color: #2f5fff;
 }
 
 .Note__dates {
