@@ -32,7 +32,13 @@ class App extends Component {
             console.error({e});
         });
     }
-        
+    
+    handleDeleteNote = noteId => {
+        this.setState({
+            notes: this.state.notes.filter(note => note.id !== noteId)
+        })
+    }
+
     renderNavRoutes() {
         return (
             <>
