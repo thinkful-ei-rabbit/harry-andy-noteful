@@ -9,17 +9,19 @@ export default class Note extends React.Component{
   static defaultProps = {
     onDeleteNote: () => {},
   }
+
   static contextType = ApiContext;
 
   handleClickDelete = e => {
     e.preventDefault()
+    console.log(this.props.id);
     const noteId = this.props.id
 
-    fetch(`http://local9090/note/${noteId}`, {
+    fetch(`http://localhost:9090/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
-      },
+      }
     })
       .then(res => {
         if (!res.ok)
@@ -43,7 +45,7 @@ render () {
           {name}
         </Link>
       </h2>
-      <button className='Note__delete' type='button' onClick={this.handleCLickDelete}>
+      <button className='Note__delete' type='button' onClick={this.handleClickDelete}>
         <FontAwesomeIcon icon='trash-alt' />
         {' '}
         remove

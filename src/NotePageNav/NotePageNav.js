@@ -8,8 +8,8 @@ import { findNote, findFolder } from '../notes-helpers';
 export default class NotePageNav extends React.Component {
   static defaultProps = {
     history: {
-      goBack: () => {}
-  },
+      goBack: () => { }
+    },
     match: {
       params: {}
     }
@@ -27,7 +27,7 @@ export default class NotePageNav extends React.Component {
       <CircleButton
         tag='button'
         role='link'
-        onClick={() => this.history.goBack()}
+        onClick={() => this.props.history.goBack()}
         className='NotePageNav__back-button'
       >
         <FontAwesomeIcon icon='chevron-left' />
