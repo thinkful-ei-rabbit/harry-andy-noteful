@@ -1,5 +1,6 @@
 import React from 'react'
 import './NotefulForm.css'
+import AddFolder from '../AddFolder/AddFolder'
 
 export default function NotefulForm(props) {
   const { className, ...otherProps } = props
@@ -7,7 +8,8 @@ export default function NotefulForm(props) {
     <form
       className={['Noteful-form', className].join(' ')}
       action='#'
-      {...otherProps}
-    />
+      {...otherProps}>
+        <AddFolder />
+      </form>
   )
 }
