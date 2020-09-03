@@ -7,7 +7,7 @@ export default function NotefulForm(props) {
   return (
     <form
       className={['Noteful-form', className].join(' ')}
-      action='#'
+      action='#' autocomplete="off"
       {...otherProps}>
         <AddFolder />
       </form>
