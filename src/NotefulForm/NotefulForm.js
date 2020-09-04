@@ -3,13 +3,13 @@ import './NotefulForm.css'
 import AddFolder from '../AddFolder/AddFolder'
 
 export default function NotefulForm(props) {
-  const { className, ...otherProps } = props
+  const { className, history, ...otherProps } = props
   return (
     <form
       className={['Noteful-form', className].join(' ')}
-      action='#' autocomplete="off"
+      action='#' autoComplete="off"
       {...otherProps}>
-        <AddFolder />
+        <AddFolder history={history} />
       </form>
   )
 }

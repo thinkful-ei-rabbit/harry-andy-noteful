@@ -1,4 +1,5 @@
 import React from 'react';
+import {Route,Link} from 'react-router-dom';
 import ApiContext from '../ApiContext';
 
 
@@ -11,6 +12,9 @@ export default class AddFolder extends React.Component {
     static defaultProps = {
         folders: [],
         notes: [],
+        history: {
+            goBack: () => {}
+        },
         match: {
             params: {}
           }
@@ -43,18 +47,17 @@ export default class AddFolder extends React.Component {
             if (!res.ok)
                 return res.json().then(e => Promise.reject(e))
             return res.json()
-        }).then(() => {
+        }).then((resJson) => {
+            console.log(resJson);
             this.context.addFolder(newFolder);
-            console.log(this.context.folders);
-            //return user to home page
-            //this.props.history.push(`/folder/${this.context.folders}`);
+            this.props.history.push('/');
         }).catch(error => {
             console.error({ error });
         })
     }
 
     render() {
-        const { name, id } = this.props.folders
+        const { name, id, history } = this.props
         return (
             <div>
                 <label htmlFor="new-folder">
@@ -64,6 +67,7 @@ export default class AddFolder extends React.Component {
                     onChange={e => this.setNewFolderName(e.target.value)} />
                     <p className="error">{this.validateFolderName()}</p>
                 <button disabled={this.validateFolderName()} onClick={this.handleCreateFolder}>Create Folder</button>
+                {/* <button onClick={this.props.history.push('/')}>Cancel</button> */}
             </div>
         );
     }

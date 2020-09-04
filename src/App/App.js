@@ -12,7 +12,8 @@ import './App.css';
 class App extends Component {
     state = {
         notes: [],
-        folders: []
+        folders: [],
+        currentFolderId: ''
     };
 
 
@@ -40,14 +41,22 @@ class App extends Component {
         })
     }
 
+    handleAddNote = (newNoteName,newNoteContent, modified) => {
+        this.setState({
+            notes:[...this.state.notes, {
+                name: newNoteName,
+                content: newNoteContent,
+                modified
+            }]
+        });
+    }
+
     handleAddFolder = newFolderName => {
-   
         this.setState({
             folders: [...this.state.folders, {
                 name: newFolderName
             }]
         })
-
     }
 
     renderNavRoutes() {
@@ -59,7 +68,7 @@ class App extends Component {
                         key={path}
                         path={path}
                         component={NoteListNav}
-                            />
+                    />
                 ))}
                 <Route path="/note/:noteId" component={NotePageNav} />
                 <Route path="/add-folder" component={NoteListNav} />
@@ -89,8 +98,10 @@ class App extends Component {
         const value = {
             notes: this.state.notes,
             folders: this.state.folders,
+            currentFolderId: '',
             deleteNote: this.handleDeleteNote,
-            addFolder: this.handleAddFolder
+            addFolder: this.handleAddFolder,
+            addNote: this.handleAddNote
         };
         return (
             <ApiContext.Provider value={value}>
@@ -108,6 +119,5 @@ class App extends Component {
         );
     }
 } 
-
 
 export default App;
