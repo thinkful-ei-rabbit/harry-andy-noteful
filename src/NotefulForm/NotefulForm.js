@@ -1,6 +1,9 @@
-import React from 'react'
-import './NotefulForm.css'
-import AddFolder from '../AddFolder/AddFolder'
+import React from 'react';
+import {Route} from 'react-router-dom';
+import AddNote from '../AddNote/AddNote';
+import AddFolder from '../AddFolder/AddFolder';
+import './NotefulForm.css';
+
 
 export default function NotefulForm(props) {
   const { className, history, ...otherProps } = props
@@ -9,7 +12,9 @@ export default function NotefulForm(props) {
       className={['Noteful-form', className].join(' ')}
       action='#' autoComplete="off"
       {...otherProps}>
-        <AddFolder history={history} />
-      </form>
+        
+        <Route path="/add-folder" render={()=> <AddFolder history={history} />} />
+        <Route path="/add-note" render={() => <AddNote history={history} />} />
+    </form>
   )
 }

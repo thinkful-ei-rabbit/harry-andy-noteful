@@ -57,7 +57,6 @@ export default class AddFolder extends React.Component {
     }
 
     render() {
-        const { name, id, history } = this.props
         return (
             <div>
                 <label htmlFor="new-folder">

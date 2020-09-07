@@ -90,6 +90,7 @@ class App extends Component {
                 ))}
                 <Route path="/note/:noteId" component={NotePageMain} />
                 <Route path="/add-folder" component={NotefulForm} />
+                <Route path="/add-note" component={NotefulForm} />
             </>
         );
     }
